@@ -4,7 +4,7 @@ section.places {
 	margin-left: 20px;
 }
 
-ul.place-articles {
+div.place-articles {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-evenly;
