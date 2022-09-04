@@ -110,20 +110,20 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of\
  all instances based or not on the class name. """
         args = line.split(' ')
+        storage.reload()
 
-        if len(args[0]) == 0 or args[0] in globalClasses:
-            storage.reload()
-            if args[0] in globalClasses:
-                myobjects = storage.all(args[0])
-            else:
-                myobjects = storage.all()
-            list_obj = []
-            for value in myobjects.values():
-                list_obj.append(str(value))
-            print(list_obj)
-
+        if not args[0]:
+            myobjects = storage.all()
+        elif args[0] in globalClasses:
+            myobjects = storage.all(args[0])
         else:
             print("** class doesn't exist **")
+            return
+
+        list_obj = []
+        for value in myobjects.values():
+            list_obj.append(str(value))
+        print(list_obj)
 
     def do_update(self, line):
         'Updates an instance based on the class name and id'
